@@ -13,7 +13,7 @@ def temp_root_component() -> str:
 
     pattern = "%Y-%m-%d %H:%M:%S"
     run_datetime = datetime.now().strftime(pattern)
-    temp_root = f"gs://pipelines/runs/{run_datetime}"
+    temp_root = f"gs://pipelines/dwarf/runs/{run_datetime}"
     return temp_root
 
 
@@ -53,4 +53,4 @@ def pipeline():
 
     read_step = read_component(temp_root=temp_root)
     predict_step = predict_component(temp_root=temp_root).after(read_step)
-    write_step = write_component(temp_root=temp_root)
+    write_step = write_component(temp_root=temp_root).after(predict_step)

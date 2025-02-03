@@ -13,7 +13,7 @@ def temp_root_component() -> str:
 
     pattern = "%Y-%m-%d %H:%M:%S"
     run_datetime = datetime.now().strftime(pattern)
-    temp_root = f"gs://pipelines/dwarf/runs/{run_datetime}"
+    temp_root = f"gs://pipelines/runs/dwarf/{run_datetime}"
     return temp_root
 
 
